@@ -1,7 +1,6 @@
 package powerpoint
 
 import (
-	"fmt"
 	"math"
 	"path/filepath"
 	"strings"
@@ -88,7 +87,6 @@ func (s *Screenshot) Export(input, output string) error {
 	count := (int)(oleutil.MustGetProperty(slides.ToIDispatch(), "Count").Val)
 	s.Index = int(math.Min(math.Max(float64(s.Index), 1), float64(count)))
 
-	fmt.Println("index", s.Index)
 	slide := oleutil.MustCallMethod(slides.ToIDispatch(), "Item", 1)
 	defer slide.Clear()
 
